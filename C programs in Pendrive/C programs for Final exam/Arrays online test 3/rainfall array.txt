@@ -1,0 +1,51 @@
+#include <stdio.h> 
+int main ( void ) // program execution begins with function main
+{
+    float rainfall[ 3 ][ 4 ] = { 0 }; // array declaration 
+    float maxRainfall[ 3 ] = { 0 }; // array declaration
+    int i, j; // variable declaration
+    float max = 0;
+
+    // for loop to take user inputs
+
+    for( i = 0; i < 3; i++ )
+    {
+        printf( "Day : %d\n", i + 1 ); // display the day number
+      
+        for( j = 0; j < 4; j++ ) 
+        { 
+            printf( "Enter the rainfall of city %d : ", j + 1 ); // prompt to print
+            scanf( "%f", &rainfall[ i ][ j ] ); // read an integer
+
+            if( rainfall[ i ][ j ] >= max ) // checking the condition
+            {
+                maxRainfall[ i ] = rainfall[ i ][ j ]; // initialize the value of maximum rainfall to the array 
+                max = maxRainfall[ i ];
+            }
+            
+        } // end of for loop
+		max = 0;
+        
+    }
+    printf( "\tCity 1\tCity 2\tCity 3\tCity 4\n" ); // display the city numbers    
+        // for loop for display the array 
+
+        for( i = 0; i < 3; i++ )
+        {
+            printf( "Day %d :", i + 1 ); // display the day number
+
+            for( j = 0; j < 4; j++ )
+            {
+                printf( "%.2f\t", rainfall[ i ][ j ] ); // display the rainfall
+            }
+            printf( "\n" ); // print new line
+        }
+        printf( "\n\n" ); // print new line
+      
+        for( i = 0; i < 3; i++ ) // for loop for displaying the maximum rainfall values
+        {
+            printf( "Maximum rainfall of day %d : %.2f\n", i + 1, maxRainfall[ i ] ); // display the maximum rainfall 
+        }
+        return 0;
+        
+ } // end of function main

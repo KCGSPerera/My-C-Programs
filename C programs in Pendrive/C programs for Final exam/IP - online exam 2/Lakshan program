@@ -1,0 +1,78 @@
+/*it21805028
+group - y1.s1.wd.01.02.s2
+malabe center
+*/
+#include<stdio.h>
+float calcPrice (int pizzaType, int quantity);//calulate pizza price function prototype
+float getDiscount (float totPrice, int totalQuantity);//calulate pizza discount function prototype
+int main (void)//beginning of the main function
+{
+	//variable declaration
+	int type;
+	int quantity0, quantity1;
+	float total;
+	
+	do
+	{
+		printf( "Enter Pizza type: " );//prompt for print
+		scanf( "%d", &type );//reads user input2
+		
+		if ( type != 100 && type != 200 && type != 300 && type != -1 )
+		{
+			printf( "Invalid Pizza Type\n" );//prompt for print
+		}
+		
+		else if ( type == -1 )
+			{
+				break;
+			}
+		
+		else
+			{
+				printf( "Enter Quantity: " );//prompt for print
+				scanf( "%d", &quantity0 );//reads user input
+		
+				quantity1 += quantity0;
+				total += calcPrice( type, quantity0 );
+			}
+		
+	}while( type != -1 );
+	
+	printf( "Total Amount (Rs): %.2f\n", total );//prompt for print
+	printf( "Discount (Rs): %.2f\n", getDiscount( total, quantity1 ) );//prompt for print
+	printf( "Amount to be paid (Rs): %.2f", total - getDiscount( total, quantity1) );//prompt for print
+	
+	return 0;//end of the main function
+}
+
+//calculate pizza price function
+float calcPrice(int pizzaType, int quantity)
+{
+	switch (pizzaType)
+	{
+		case 100:	return 2300.00*quantity;
+			break;
+			
+		case 200:	return 2500.00*quantity;
+			break;
+			
+		case 300:	return 1750.00*quantity;
+			break;
+			
+		case 400:	return 2900.00*quantity;
+			break;	
+	}
+}
+
+//calculate pizza price discount function
+float getDiscount( float totPrice, int totalQuantity )
+{
+	if  ( totalQuantity > 3 )
+	{
+		return totPrice*5/100.0; 
+	}
+		else 
+		{
+			return 0;
+		}
+}
